@@ -1,0 +1,50 @@
+{
+  "apps": [
+    {
+      "name": "web",
+      "script": "web.js",
+      "exec_mode": "cluster",
+      "instances": "max",
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "api",
+      "script": "api.js",
+      "exec_mode": "cluster",
+      "instances": "max",
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "agenda",
+      "script": "agenda.js",
+      "exec_mode": "cluster",
+      "instances": "max",
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "proxy",
+      "script": "proxy.js",
+      "exec_mode": "cluster",
+      "instances": "max",
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "deploy",
+      "host": "project1-deploy",
+      "ref": "origin/master",
+      "repo": "git@github.com:clevertechru/project1.git",
+      "path": "/var/www/production",
+      "post-deploy": "yarn start post-deploy"
+    }
+  }
+}
